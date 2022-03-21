@@ -1,0 +1,26 @@
+# mysql数据库连接。spring boot2.1及以上，内置jdbc8驱动
+spring:
+  datasource:
+    #driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+    url: jdbc:p6spy:mysql://localhost:3306/mybatis-plus?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
+    #url: jdbc:mysql://localhost:3306/mybatis-plus?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
+    username: root
+    password: root1234
+
+
+
+mybatis-plus:
+  global-config:
+    db-config:
+      # 全局逻辑删除的实体字段名(since 3.3.0，配置后可以忽略不配置@TableLogic注解)
+      logic-delete-field: flag
+      # 逻辑已删除值(默认为1)
+      logic-delete-value: 1
+      # 逻辑未删除值(默认为0)
+      logic-not-delete-value: 0
+  # mybatis日志,在控制台查看mysql语句输出
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-enums-package: com.maxt.mybatisplus.enums
+
